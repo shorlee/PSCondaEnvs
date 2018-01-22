@@ -62,7 +62,7 @@ if ($IsOSX -or $IsLinux) {
 } else {
     $shellType = 'cmd.exe'
 }
-conda '..checkenv' $shellType $Name
+.\conda '..checkenv' $shellType $Name
 if (-not $?) {
     Write-Host "Environment not changed." -ForegroundColor Red
     exit 
@@ -75,7 +75,7 @@ if (Test-Path Env:CONDA_DEFAULT_ENV) {
 }
 
 Write-Verbose "Activating environment ""$Name""..."
-$newPath = (conda '..activate' $shellType $Name)
+$newPath = (.\conda '..activate' $shellType $Name)
 if (-not $?)
 {
     Write-Host 'Environment not activated.' -ForegroundColor Red
